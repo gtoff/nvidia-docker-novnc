@@ -1,3 +1,20 @@
+# Notes on getting this to run
+
+On our GPU VMs lightdm/gdm3 were not starting. Problem was Xorg.conf missing the right device (nvidia GPU).
+Running nvidia-xconfig set up a working Xorg.conf and got gdm to run.
+
+Still, any application launched from console won't find DISPLAY=:0. One way to see active sessions is:
+
+    loginctl list-sessions
+  
+Then the following command should show the DISPLAY for the session:
+
+    loginctl show-session -p Display -p Active <session-id>
+  
+
+
+## Original documentation below
+
 ![Preview Image](https://cdn-images-1.medium.com/max/1600/1*wKNrdA3rqpHZU82DU4gVPA.gif)
 
 ### Building a GPU-enhanced Lubuntu Desktop with nvidia-docker2
