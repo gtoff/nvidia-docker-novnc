@@ -11,6 +11,21 @@ Then the following command should show the DISPLAY for the session:
 
     loginctl show-session -p Display -p Active <session-id>
   
+That did not work. After installing and uninstalling gdm3 and lightdm I realized lightdm managed to start X with display :0
+
+    ubuntu@rap-lab-vm:~$ sudo systemctl status display-manager.service 
+● lightdm.service - Light Display Manager
+   Loaded: loaded (/lib/systemd/system/lightdm.service; indirect; vendor preset: enabled)
+   Active: active (running) since Tue 2021-01-19 12:58:35 UTC; 10min ago
+     Docs: man:lightdm(1)
+ Main PID: 3617 (lightdm)
+    Tasks: 6 (limit: 4915)
+   CGroup: /system.slice/lightdm.service
+           ├─3617 /usr/sbin/lightdm
+           ├─3630 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp
+           └─3835 lightdm --session-child 13 20
+
+Then, using the setup_host scripts I can connect with xauth using the lightdm user and add xauth permissions.
 
 
 ## Original documentation below
