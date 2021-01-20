@@ -2,8 +2,36 @@
 
 In order for a display manager to run properly, on our GPU VMs I had to configure X to use the nvidia cards. This works by launching nvidia-xconfig.
 
+On our GPU VMs lightdm/gdm3 were not starting. Problem was Xorg.conf missing the right device (nvidia GPU).
+Running nvidia-xconfig set up a working Xorg.conf and got gdm to run.
 
-## Original content below
+Still, any application launched from console won't find DISPLAY=:0. One way to see active sessions is:
+
+    loginctl list-sessions
+  
+Then the following command should show the DISPLAY for the session:
+
+    loginctl show-session -p Display -p Active <session-id>
+  
+That did not work. After installing and uninstalling gdm3 and lightdm I realized lightdm managed to start X with display :0
+
+    ubuntu@rap-lab-vm:~$ sudo systemctl status display-manager.service 
+● lightdm.service - Light Display Manager
+   Loaded: loaded (/lib/systemd/system/lightdm.service; indirect; vendor preset: enabled)
+   Active: active (running) since Tue 2021-01-19 12:58:35 UTC; 10min ago
+     Docs: man:lightdm(1)
+ Main PID: 3617 (lightdm)
+    Tasks: 6 (limit: 4915)
+   CGroup: /system.slice/lightdm.service
+           ├─3617 /usr/sbin/lightdm
+           ├─3630 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp
+           └─3835 lightdm --session-child 13 20
+
+Then, using the setup_host scripts I can connect with xauth using the lightdm user and add xauth permissions.
+
+
+# Original documentation below
+
 
 ![Preview Image](https://cdn-images-1.medium.com/max/1600/1*wKNrdA3rqpHZU82DU4gVPA.gif)
 
