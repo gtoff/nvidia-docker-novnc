@@ -1,3 +1,10 @@
+# Notes
+
+In order for a display manager to run properly, on our GPU VMs I had to configure X to use the nvidia cards. This works by launching nvidia-xconfig.
+
+
+## Original content below
+
 ![Preview Image](https://cdn-images-1.medium.com/max/1600/1*wKNrdA3rqpHZU82DU4gVPA.gif)
 
 ### Building a GPU-enhanced Lubuntu Desktop with nvidia-docker2
@@ -27,3 +34,5 @@ https://github.com/willkessler/nvidia-docker-novnc/issues/2
 ### More info
 
 For more links and reference, please see the Medium posting about this environment [here](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505).
+
+
