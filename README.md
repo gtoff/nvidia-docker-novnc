@@ -1,3 +1,25 @@
+# Scripts to set up RAP course VMs
+
+The following steps should configure the VMs to run GPU accelerated docker containers with noVNC.
+Run:
+
+    sudo ./setup-host.sh
+
+After installing and configuring a few components (it takes a bit) you should get the output:
+
+    localuser:root being added to access control list
+    localuser:ubuntu being added to access control list
+
+After this you can try if the system runs properly by using our container:
+
+    ./run.sh
+    
+To verify it works: 
+- connect to https://VM_IP with your browser
+- accept the self-signed certificate
+- use terminator on the desktop to launch 'glxgears'
+- use the same terminator to run our robotic simulations
+
 # Notes
 
 In order for a display manager to run properly, on our GPU VMs I had to configure X to use the nvidia cards. This works by launching nvidia-xconfig.
