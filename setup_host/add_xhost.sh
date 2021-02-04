@@ -8,6 +8,6 @@ export DISPLAY=":0"
 #
 # This xhost command is key to getting Lubuntu working properly with nvidia-driven GPU support.
 #
-su - lightdm -c "xhost +si:localuser:root"
-su - lightdm -c "xhost +si:localuser:ubuntu"
+su - lightdm -c "export DISPLAY=:0 ; xhost +si:localuser:root"
+su - lightdm -c "export DISPLAY=:0 ; xhost +si:localuser:ubuntu"
 perl -pi -e 's/^lightdm:(.*)(\/bin\/bash)$/lightdm:$1\/bin\/false/' /etc/passwd
