@@ -12,5 +12,7 @@ apt remove -y gdm3
 setup_host/basics.sh
 echo "Starting lightdm"
 systemctl start display-manager.service
+sleep 5
+systemctl status --no-pager display-manager.service
 echo "Adding users to lightdm xhost"
 setup_host/add_xhost.sh
