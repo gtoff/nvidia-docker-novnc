@@ -5,11 +5,6 @@ Run:
 
     sudo ./setup-host.sh
 
-After installing and configuring a few components (it takes a bit) you should get the output:
-
-    localuser:root being added to access control list
-    localuser:ubuntu being added to access control list
-
 After this you can try if the system runs properly by using our container:
 
     ./run.sh

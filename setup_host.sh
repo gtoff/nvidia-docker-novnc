@@ -14,5 +14,3 @@ echo "Adding users to lightdm xhost"
 cp setup_host/lightdm.conf /etc/lightdm
 echo "Starting lightdm"
 systemctl start display-manager.service
-#echo "Adding users to lightdm xhost"
-#setup_host/add_xhost.sh
