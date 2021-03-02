@@ -1,6 +1,9 @@
 # Scripts to set up RAP course VMs
 
 The following steps should configure the VMs to run GPU accelerated docker containers with noVNC.
+
+1) clone this repo in /opt --> VERY IMPORTANT or wont't work
+
 Run:
 
     sudo ./setup-host.sh
